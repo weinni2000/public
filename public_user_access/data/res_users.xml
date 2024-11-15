@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="public_api_partner" model="res.partner">
+        <field name="name">Public API User</field>
+    </record>
+    <record id="public_api_user" model="res.users">
+        <field name="login">public_api</field>
+        <field name="password">public_api</field>
+        <field name="partner_id" ref="public_user_access.public_api_partner" />
+        <field name="company_id" ref="base.main_company" />
+        <field name="company_ids" eval="[Command.link(ref('base.main_company'))]" />
+        <field name="groups_id" eval="[Command.link(ref('base.group_user'))]" />
+    </record>
+</odoo>
